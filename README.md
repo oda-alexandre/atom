@@ -1,7 +1,16 @@
 # ATOM
 
-![atom](/logo-atom.png) ![atom](/logo-docker.png)
+![atom](https://raw.githubusercontent.com/oda-alexandre/atom/master/logo-atom.png) ![docker](https://raw.githubusercontent.com/oda-alexandre/atom/master/logo-docker.png)
 
+## INDEX
+
+- [Build Docker](#BUILD)
+- [Introduction](#INTRODUCTION)
+- [Prerequis](#PREREQUIS)
+- [Installation](#INSTALLATION)
+- [License](#LICENSE)
+
+## BUILD DOCKER
 
 [![atom docker build](https://img.shields.io/docker/build/alexandreoda/atom.svg)](https://hub.docker.com/r/alexandreoda/atom)
 
@@ -24,6 +33,7 @@ Installer [Docker](https://www.docker.com)
 ```
     docker run -d --name atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}/atom:/home/atom/.atom -e DISPLAY alexandreoda/atom
 ```
+
 
 ## LICENSE
 
