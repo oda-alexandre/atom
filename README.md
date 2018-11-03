@@ -28,10 +28,10 @@ Installer [Docker](https://www.docker.com)
 ## INSTALLATION
 
 ```
-    mkdir $HOME/atom
+mkdir $HOME/atom
 ```
 ```
-    docker run -d --name atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}/atom:/home/atom/.atom -e DISPLAY alexandreoda/atom
+docker run -d --name atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}/atom:/home/atom/.atom -e DISPLAY alexandreoda/atom
 ```
 
 
