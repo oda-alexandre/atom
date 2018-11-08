@@ -30,7 +30,7 @@ Installer [Docker](https://www.docker.com)
 ## INSTALLATION
 
 ```
-docker run -d --name atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/atom/.atom -e DISPLAY alexandreoda/atom
+docker run -d --name atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/atom -e DISPLAY alexandreoda/atom
 ```
 
 
