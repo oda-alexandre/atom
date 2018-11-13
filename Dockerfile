@@ -18,6 +18,8 @@ wget \
 git \
 curl \
 fakeroot \
+php \
+composer \
 php7.0 \
 python3 \
 python3-setuptools \
