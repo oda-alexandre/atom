@@ -15,6 +15,7 @@ echo "deb-src http://security.debian.org/debian-security/ stretch/updates main c
 RUN apt-get update && apt-get install -y --no-install-recommends \
 sudo \
 ca-certificates \
+locales \
 apt-utils \
 wget \
 git \
@@ -43,6 +44,10 @@ libgl1-mesa-dri \
 xdg-utils \
 libcanberra-gtk-module
 
+# SELECTION LANGUE FRANCAISE
+ENV LANG fr_FR.UTF-8
+RUN echo fr_FR.UTF-8 UTF-8 > /etc/locale.gen && locale-gen
+
 # AJOUT UTILISATEUR
 RUN useradd -d /home/atom -m atom && \
 passwd -d atom && \
@@ -51,21 +56,21 @@ adduser atom sudo
 # SELECTION UTILISATEUR
 USER atom
 
-# EMPLACEMENT DE TRAVAIL
+# SELECTION ESPACE DE TRAVAIL
 WORKDIR /home/atom
 
 # INSTALLATION DES PREREQUIS python
 RUN sudo easy_install3 pip && \
 sudo pip install autopep8
 
-# INSTALLATION DE ATOM
+# INSTALLATION DE L'APPLICATION
 RUN wget https://atom.io/download/deb -O atom-amd64.deb && \
 sudo dpkg -i atom-amd64.deb && \
-rm -rf atom-amd64.deb
 
 # NETTOYAGE
 RUN sudo apt-get --purge autoremove -y \
-wget
+wget && \
+rm -rf atom-amd64.deb
 
-# COMMANDE AU DEMARRAGE
+# COMMANDE AU DEMARRAGE DU CONTENEUR
 CMD atom -f
