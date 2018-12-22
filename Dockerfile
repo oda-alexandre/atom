@@ -65,7 +65,7 @@ sudo pip install autopep8
 
 # INSTALLATION DE L'APPLICATION
 RUN wget https://atom.io/download/deb -O atom-amd64.deb && \
-sudo dpkg -i atom-amd64.deb && \
+sudo dpkg -i atom-amd64.deb
 
 # NETTOYAGE
 RUN sudo apt-get --purge autoremove -y \
