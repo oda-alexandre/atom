@@ -15,7 +15,6 @@ echo "deb-src http://security.debian.org/debian-security/ stretch/updates main c
 RUN apt-get update && apt-get install -y --no-install-recommends \
 sudo \
 ca-certificates \
-locales \
 apt-utils \
 wget \
 git \
@@ -43,10 +42,6 @@ libgl1-mesa-glx \
 libgl1-mesa-dri \
 xdg-utils \
 libcanberra-gtk-module
-
-# SELECTION LANGUE FRANCAISE
-ENV LANG fr_FR.UTF-8
-RUN echo fr_FR.UTF-8 UTF-8 > /etc/locale.gen && locale-gen
 
 # AJOUT UTILISATEUR
 RUN useradd -d /home/atom -m atom && \
