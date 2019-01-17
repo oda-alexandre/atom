@@ -4,12 +4,14 @@ MAINTAINER https://oda-alexandre.github.io
 
 # AJOUT DES REPOS contrib non-free DANS LE FICHIER /etc/apt/sources.list
 RUN rm -rf /etc/apt/sources.list && \
-echo "deb http://deb.debian.org/debian stretch main contrib non-free" >> /etc/apt/sources.list && \
-echo "deb-src http://deb.debian.org/debian stretch main contrib non-free" >> /etc/apt/sources.list && \
-echo "deb http://deb.debian.org/debian stretch-updates main contrib non-free" >> /etc/apt/sources.list && \
-echo "deb-src http://deb.debian.org/debian stretch-updates main contrib non-free" >> /etc/apt/sources.list && \
-echo "deb http://security.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list && \
-echo "deb-src http://security.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list
+cat <<EOF > /etc/apt/sources.list
+deb http://deb.debian.org/debian stretch main contrib non-free
+deb-src http://deb.debian.org/debian stretch main contrib non-free
+deb http://deb.debian.org/debian stretch-updates main contrib non-free
+deb-src http://deb.debian.org/debian stretch-updates main contrib non-free
+deb http://security.debian.org/debian-security/ stretch/updates main contrib non-free
+deb-src http://security.debian.org/debian-security/ stretch/updates main contrib non-free
+EOF
 
 # INSTALLATION DES PREREQUIS
 RUN apt-get update && apt-get install -y --no-install-recommends \
