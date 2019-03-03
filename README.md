@@ -12,7 +12,7 @@
 - [License](#LICENSE)
 
 
-## Badges
+## BADGES
 
 [![version](https://images.microbadger.com/badges/version/alexandreoda/atom.svg)](https://microbadger.com/images/alexandreoda/atom)
 [![size](https://images.microbadger.com/badges/image/alexandreoda/atom.svg)](https://microbadger.com/images/alexandreoda/atom")
