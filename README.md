@@ -26,7 +26,7 @@ Ce repository contient le fichier Dockerfile de
 
 - [Atom](https://atom.io/)
 
-Mis à jour automatiquement dans le [docker hub](https://hub.docker.com/r/alexandreoda/atom/) public.
+Mis à jour automatiquement dans le [docker hub public](https://hub.docker.com/r/alexandreoda/atom/).
 
 
 ## PREREQUIS
