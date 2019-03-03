@@ -1,6 +1,10 @@
 FROM debian:stretch-slim
 
-MAINTAINER https://oda-alexandre.github.io
+MAINTAINER https://oda-alexandre.com
+
+# VARIABLES D'ENVIRONNEMENT
+ENV USER atom
+ENV LANG fr_FR.UTF-8
 
 # AJOUT DES REPOS contrib non-free DANS LE FICHIER /etc/apt/sources.list
 RUN rm -rf /etc/apt/sources.list && \
@@ -9,11 +13,12 @@ echo "deb-src http://deb.debian.org/debian stretch main contrib non-free" >> /et
 echo "deb http://deb.debian.org/debian stretch-updates main contrib non-free" >> /etc/apt/sources.list && \
 echo "deb-src http://deb.debian.org/debian stretch-updates main contrib non-free" >> /etc/apt/sources.list && \
 echo "deb http://security.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list && \
-echo "deb-src http://security.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list
+echo "deb-src http://security.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list && \
 
 # INSTALLATION DES PREREQUIS
-RUN apt-get update && apt-get install -y --no-install-recommends \
+apt-get update && apt-get install -y --no-install-recommends \
 sudo \
+locales \
 ca-certificates \
 apt-utils \
 wget \
@@ -41,29 +46,32 @@ libxtst6 \
 libgl1-mesa-glx \
 libgl1-mesa-dri \
 xdg-utils \
-libcanberra-gtk-module
+libcanberra-gtk-module && \
+
+# SELECTION DE LA LANGUE FRANCAISE
+echo ${LANG} > /etc/locale.gen && locale-gen && \
 
 # AJOUT UTILISATEUR
-RUN useradd -d /home/atom -m atom && \
-passwd -d atom && \
-adduser atom sudo
+useradd -d /home/${USER} -m ${USER} && \
+passwd -d ${USER} && \
+adduser ${USER} sudo
 
 # SELECTION UTILISATEUR
-USER atom
+USER ${USER}
 
 # SELECTION ESPACE DE TRAVAIL
-WORKDIR /home/atom
+WORKDIR /home/${USER}
 
 # INSTALLATION DES PREREQUIS python
 RUN sudo easy_install3 pip && \
-sudo pip install autopep8
+sudo pip install autopep8 && \
 
 # INSTALLATION DE L'APPLICATION
-RUN wget https://atom.io/download/deb -O atom-amd64.deb && \
-sudo dpkg -i atom-amd64.deb
+wget https://atom.io/download/deb -O atom-amd64.deb && \
+sudo dpkg -i atom-amd64.deb && \
 
 # NETTOYAGE
-RUN sudo apt-get --purge autoremove -y \
+sudo apt-get --purge autoremove -y \
 wget && \
 rm -rf atom-amd64.deb
 
