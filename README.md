@@ -1,5 +1,6 @@
 # ATOM
 
+<img src="https://github-atom-io-herokuapp-com.freetls.fastly.net/assets/index-portal-blue-c2e705932469b61cbb9ceb0b6b778e35.svg"/>
 [![dockeri.co](https://dockeri.co/image/alexandreoda/atom)](https://hub.docker.com/r/alexandreoda/atom)
 
 
