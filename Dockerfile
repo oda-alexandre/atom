@@ -3,8 +3,8 @@ FROM debian:stretch-slim
 MAINTAINER https://oda-alexandre.com
 
 # VARIABLES D'ENVIRONNEMENT
-ENV USER atom \
-LANG fr_FR.UTF-8
+ENV USER atom
+ENV LANG fr_FR.UTF-8
 
 # AJOUT DES REPOS contrib non-free DANS LE FICHIER /etc/apt/sources.list
 RUN rm -rf /etc/apt/sources.list && \
