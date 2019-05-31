@@ -6,6 +6,7 @@ MAINTAINER https://www.oda-alexandre.com/
 ENV USER atom
 ENV LANG fr_FR.UTF-8
 
+
 # AJOUT DES REPOS contrib non-free DANS LE FICHIER /etc/apt/sources.list
 RUN rm -rf /etc/apt/sources.list && \
 echo "deb http://deb.debian.org/debian stretch main contrib non-free" >> /etc/apt/sources.list && \
