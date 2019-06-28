@@ -1,14 +1,14 @@
 # ATOM
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Atom_editor_logo.svg/220px-Atom_editor_logo.svg.png"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Atom_editor_logo.svg/220px-Atom_editor_logo.svg.png" width="200" height="200"/>
 
 
 ## INDEX
 
 - [Badges](#BADGES)
 - [Introduction](#INTRODUCTION)
-- [Prerequis](#PREREQUIS)
-- [Installation](#INSTALLATION)
+- [PREREQUISITESites](#PREREQUISITESITES)
+- [Install](#INSTALL)
 - [License](#LICENSE)
 
 
@@ -19,19 +19,25 @@
 
 ## INTRODUCTION
 
-Ce repository contient le fichier Dockerfile de
+Docker image of :
 
 - [Atom](https://atom.io/)
 
-Mis à jour automatiquement dans le [docker hub public](https://hub.docker.com/r/alexandreoda/atom/).
+Continuous integration on :
+
+- [gitlab](https://gitlab.com/oda-alexandre/android-root-tools/pipelines)
+
+automatically updated on :
+
+- [docker hub public](https://hub.docker.com/r/alexandreoda/atom/).
 
 
-## PREREQUIS
+## PREREQUISITES
 
-Installer [docker](https://www.docker.com)
+Use [docker](https://www.docker.com)
 
 
-## INSTALLATION
+## INSTALL
 
 ```
 docker run -d --name atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/atom -e DISPLAY alexandreoda/atom
@@ -40,4 +46,4 @@ docker run -d --name atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/at
 
 ## LICENSE
 
-[![GPLv3+](http://gplv3.fsf.org/gplv3-127x51.png)](https://github.com/oda-alexandre/atom/blob/master/LICENSE)
+[![GPLv3+](http://gplv3.fsf.org/gplv3-127x51.png)](https://gitlab.com/oda-alexandre/atom/blob/master/LICENSE)

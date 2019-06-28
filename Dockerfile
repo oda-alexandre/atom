@@ -2,11 +2,11 @@ FROM debian:stretch-slim
 
 MAINTAINER https://www.oda-alexandre.com/
 
-# VARIABLES D'ENVIRONNEMENT
+# VARIABLES
 ENV USER atom
 ENV LANG fr_FR.UTF-8
 
-# AJOUT DES REPOS contrib non-free DANS LE FICHIER /etc/apt/sources.list
+# ADD contrib non-free IN /etc/apt/sources.list
 RUN rm -rf /etc/apt/sources.list && \
 echo "deb http://deb.debian.org/debian stretch main contrib non-free" >> /etc/apt/sources.list && \
 echo "deb-src http://deb.debian.org/debian stretch main contrib non-free" >> /etc/apt/sources.list && \
@@ -15,7 +15,7 @@ echo "deb-src http://deb.debian.org/debian stretch-updates main contrib non-free
 echo "deb http://security.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list && \
 echo "deb-src http://security.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list && \
 
-# INSTALLATION DES PREREQUIS
+# INSTALL OF PACKAGES
 apt-get update && apt-get install -y --no-install-recommends \
 sudo \
 locales \
@@ -48,32 +48,32 @@ libgl1-mesa-dri \
 xdg-utils \
 libcanberra-gtk-module && \
 
-# SELECTION DE LA LANGUE FRANCAISE
+# CHANGE LOCALES
 echo ${LANG} > /etc/locale.gen && locale-gen && \
 
-# AJOUT UTILISATEUR
+# ADD USER
 useradd -d /home/${USER} -m ${USER} && \
 passwd -d ${USER} && \
 adduser ${USER} sudo
 
-# SELECTION UTILISATEUR
+# SELECT USER
 USER ${USER}
 
-# SELECTION ESPACE DE TRAVAIL
+# SELECT WORKING SPACE
 WORKDIR /home/${USER}
 
-# INSTALLATION DES PREREQUIS python
+# INSTALL OF PACKAGES python
 RUN sudo easy_install3 pip && \
 sudo pip install autopep8 && \
 
-# INSTALLATION DE L'APPLICATION
+# INSTALL APP
 wget https://atom.io/download/deb -O atom-amd64.deb && \
 sudo dpkg -i atom-amd64.deb && \
 
-# NETTOYAGE
+# CLEANING
 sudo apt-get --purge autoremove -y \
 wget && \
 rm -rf atom-amd64.deb
 
-# COMMANDE AU DEMARRAGE DU CONTENEUR
+# START THE CONTAINER
 CMD atom -f
