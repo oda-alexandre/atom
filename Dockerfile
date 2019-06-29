@@ -61,7 +61,9 @@ WORKDIR /home/${USER}
 
 # INSTALL PACKAGES python
 RUN sudo easy_install3 pip && \
-sudo pip install autopep8 && \
+sudo pip install \
+autopep8 \
+pylint && \
 
 # INSTALL APP
 wget https://atom.io/download/deb -O atom-amd64.deb && \
