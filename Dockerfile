@@ -1,10 +1,11 @@
+# IMAGE TO USE
 FROM debian:stretch-slim
 
+# MAINTAINER
 MAINTAINER https://www.oda-alexandre.com/
 
 # VARIABLES
 ENV USER atom
-ENV LANG fr_FR.UTF-8
 
 # ADD contrib non-free IN /etc/apt/sources.list
 RUN rm -rf /etc/apt/sources.list && \
@@ -15,10 +16,9 @@ echo "deb-src http://deb.debian.org/debian stretch-updates main contrib non-free
 echo "deb http://security.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list && \
 echo "deb-src http://security.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list && \
 
-# INSTALL OF PACKAGES
+# INSTALL PACKAGES
 apt-get update && apt-get install -y --no-install-recommends \
 sudo \
-locales \
 ca-certificates \
 apt-utils \
 wget \
@@ -48,9 +48,6 @@ libgl1-mesa-dri \
 xdg-utils \
 libcanberra-gtk-module && \
 
-# CHANGE LOCALES
-echo ${LANG} > /etc/locale.gen && locale-gen && \
-
 # ADD USER
 useradd -d /home/${USER} -m ${USER} && \
 passwd -d ${USER} && \
@@ -62,7 +59,7 @@ USER ${USER}
 # SELECT WORKING SPACE
 WORKDIR /home/${USER}
 
-# INSTALL OF PACKAGES python
+# INSTALL PACKAGES python
 RUN sudo easy_install3 pip && \
 sudo pip install autopep8 && \
 
@@ -76,4 +73,4 @@ wget && \
 rm -rf atom-amd64.deb
 
 # START THE CONTAINER
-CMD atom -f
+CMD atom -f \
