@@ -63,7 +63,10 @@ WORKDIR /home/${USER}
 RUN sudo easy_install3 pip && \
 sudo pip install \
 autopep8 \
-pylint && \
+pylint \
+beautysh \
+tidy \
+https://github.com/google/closure-linter/zipball/master && \
 
 # INSTALL APP
 wget https://atom.io/download/deb -O atom-amd64.deb && \
