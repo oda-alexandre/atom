@@ -3,6 +3,7 @@ FROM debian:stretch-slim
 MAINTAINER https://www.oda-alexandre.com/
 
 ENV USER atom
+ENV APP https://atom.io/download/deb
 
 RUN echo -e '\033[36;1m ******* ADD contrib non-free IN sources.list ******** \033[0m' && \
 rm -rf /etc/apt/sources.list && \
@@ -63,10 +64,10 @@ autopep8 \
 pylint \
 beautysh \
 tidy \
-https://github.com/google/closure-linter/zipball/master && \
+https://github.com/google/closure-linter/zipball/master
 
 RUN echo -e '\033[36;1m ******* INSTALL APP ******** \033[0m' && \
-wget https://atom.io/download/deb -O atom-amd64.deb && \
+wget ${APP} -O atom-amd64.deb && \
 sudo dpkg -i atom-amd64.deb
 
 RUN echo -e '\033[36;1m ******* CLEANING ******** \033[0m' && \
