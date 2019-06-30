@@ -1,22 +1,19 @@
-# IMAGE TO USE
 FROM debian:stretch-slim
 
-# MAINTAINER
 MAINTAINER https://www.oda-alexandre.com/
 
-# VARIABLES
 ENV USER atom
 
-# ADD contrib non-free IN /etc/apt/sources.list
-RUN rm -rf /etc/apt/sources.list && \
+RUN echo -e '\033[36;1m ******* ADD contrib non-free IN sources.list ******** \033[0m' && \
+rm -rf /etc/apt/sources.list && \
 echo "deb http://deb.debian.org/debian stretch main contrib non-free" >> /etc/apt/sources.list && \
 echo "deb-src http://deb.debian.org/debian stretch main contrib non-free" >> /etc/apt/sources.list && \
 echo "deb http://deb.debian.org/debian stretch-updates main contrib non-free" >> /etc/apt/sources.list && \
 echo "deb-src http://deb.debian.org/debian stretch-updates main contrib non-free" >> /etc/apt/sources.list && \
 echo "deb http://security.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list && \
-echo "deb-src http://security.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list && \
+echo "deb-src http://security.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list
 
-# INSTALL PACKAGES
+RUN echo -e '\033[36;1m ******* INSTALL PACKAGES ******** \033[0m' && \
 apt-get update && apt-get install -y --no-install-recommends \
 sudo \
 ca-certificates \
@@ -46,21 +43,21 @@ libxtst6 \
 libgl1-mesa-glx \
 libgl1-mesa-dri \
 xdg-utils \
-libcanberra-gtk-module && \
+libcanberra-gtk-module
 
-# ADD USER
+RUN echo -e '\033[36;1m ******* ADD USER ******** \033[0m' && \
 useradd -d /home/${USER} -m ${USER} && \
 passwd -d ${USER} && \
 adduser ${USER} sudo
 
-# SELECT USER
+RUN echo -e '\033[36;1m ******* SELECT USER ******** \033[0m'
 USER ${USER}
 
-# SELECT WORKING SPACE
+RUN echo -e '\033[36;1m ******* SELECT WORKING SPACE ******** \033[0m'
 WORKDIR /home/${USER}
 
-# INSTALL PACKAGES python
-RUN sudo easy_install3 pip && \
+RUN echo -e '\033[36;1m ******* INSTALL PIP & MODULES ******** \033[0m' && \
+sudo easy_install3 pip && \
 sudo pip install \
 autopep8 \
 pylint \
@@ -68,14 +65,14 @@ beautysh \
 tidy \
 https://github.com/google/closure-linter/zipball/master && \
 
-# INSTALL APP
+RUN echo -e '\033[36;1m ******* INSTALL APP ******** \033[0m' && \
 wget https://atom.io/download/deb -O atom-amd64.deb && \
-sudo dpkg -i atom-amd64.deb && \
+sudo dpkg -i atom-amd64.deb
 
-# CLEANING
+RUN echo -e '\033[36;1m ******* CLEANING ******** \033[0m' && \
 sudo apt-get --purge autoremove -y \
 wget && \
 rm -rf atom-amd64.deb
 
-# START THE CONTAINER
+RUN echo -e '\033[36;1m ******* CONTAINER START COMMAND ******** \033[0m'
 CMD atom -f \
