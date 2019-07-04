@@ -25,7 +25,7 @@ Docker image of :
 
 Continuous integration on :
 
-- [gitlab](https://gitlab.com/oda-alexandre/android-root-tools/pipelines)
+- [gitlab](https://gitlab.com/oda-alexandre/atom/pipelines)
 
 Automatically updated on :
 
