@@ -57,7 +57,7 @@ USER ${USER}
 RUN echo -e '\033[36;1m ******* SELECT WORKING SPACE ******** \033[0m'
 WORKDIR /home/${USER}
 
-RUN echo -e '\033[36;1m ******* INSTALL PIP & MODULES ******** \033[0m' && \
+RUN echo -e '\033[36;1m ******* INSTALL PIP MODULES ******** \033[0m' && \
 sudo easy_install3 pip && \
 sudo pip install \
 autopep8 \
@@ -69,6 +69,11 @@ https://github.com/google/closure-linter/zipball/master
 RUN echo -e '\033[36;1m ******* INSTALL APP ******** \033[0m' && \
 wget ${APP} -O atom-amd64.deb && \
 sudo dpkg -i atom-amd64.deb
+
+RUN echo -e '\033[36;1m ******* INSTALL LINTER MODULES ******** \033[0m' && \
+apm install \
+linter-gjslint \
+linter-tidy
 
 RUN echo -e '\033[36;1m ******* CLEANING ******** \033[0m' && \
 sudo apt-get --purge autoremove -y \
