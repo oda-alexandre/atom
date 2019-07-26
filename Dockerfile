@@ -44,6 +44,7 @@ libxtst6 \
 libgl1-mesa-glx \
 libgl1-mesa-dri \
 xdg-utils \
+policykit-1 \
 libcanberra-gtk-module
 
 RUN echo -e '\033[36;1m ******* ADD USER ******** \033[0m' && \
