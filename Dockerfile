@@ -15,7 +15,7 @@ echo "deb http://security.debian.org/debian-security/ stretch/updates main contr
 echo "deb-src http://security.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list
 
 RUN echo -e '\033[36;1m ******* INSTALL PACKAGES ******** \033[0m' && \
-apt-get update && apt-get install -y --no-install-recommends \
+apt update && apt install -y --no-install-recommends \
 sudo \
 ca-certificates \
 apt-utils \
