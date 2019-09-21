@@ -69,7 +69,7 @@ sudo dpkg -i atom-amd64.deb
 
 RUN echo -e '\033[36;1m ******* INSTALL LINTER MODULES ******** \033[0m' && \
 apm install \
-linter-g \
+linter-gcc \
 jslint \
 linter-tidy
 
