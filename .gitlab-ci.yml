@@ -100,7 +100,7 @@ license_management:
   only:
     - dev
 
-test:
+test_app:
   stage: test
   allow_failure: false
   script:
