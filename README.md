@@ -4,11 +4,12 @@
 
 ## INDEX
 
-- [Badges](#BADGES)
-- [Introduction](#INTRODUCTION)
-- [Prerequisites](#PREREQUISITESITES)
-- [Install](#INSTALL)
-- [License](#LICENSE)
+  - [INDEX](#index)
+  - [BADGES](#badges)
+  - [INTRODUCTION](#introduction)
+  - [PREREQUISITES](#prerequisites)
+  - [INSTALL](#install)
+  - [LICENSE](#license)
 
 ## BADGES
 
@@ -34,7 +35,7 @@ Use [docker](https://www.docker.com)
 
 ## INSTALL
 
-```docker run -d --name atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/atom -e DISPLAY alexandreoda/atom```
+```docker run -d --name atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/atom -e DISPLAY --privileged --network host alexandreoda/atom```
 
 ## LICENSE
 
