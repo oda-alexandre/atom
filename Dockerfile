@@ -3,6 +3,7 @@ FROM debian:stretch-slim
 LABEL authors https://www.oda-alexandre.com/
 
 ENV USER atom
+ENV HOME /home/${USER}
 ENV LOCALES fr_FR.UTF-8
 ENV APP https://atom.io/download/deb
 
@@ -53,7 +54,7 @@ RUN echo -e '\033[36;1m ******* CHANGE LOCALES ******** \033[0m'; \
   locale-gen ${LOCALES}
   
 RUN echo -e '\033[36;1m ******* ADD USER ******** \033[0m'; \
-  useradd -d /home/${USER} -m ${USER}; \
+  useradd -d ${HOME} -m ${USER}; \
   passwd -d ${USER}; \
   adduser ${USER} sudo
 
@@ -61,10 +62,10 @@ RUN echo -e '\033[36;1m ******* SELECT USER ******** \033[0m'
 USER ${USER}
 
 RUN echo -e '\033[36;1m ******* SELECT WORKING SPACE ******** \033[0m'
-WORKDIR /home/${USER}
+WORKDIR ${HOME}
 
 RUN echo -e '\033[36;1m ******* INSTALL PIP MODULES ******** \033[0m'
-COPY ./requirements.txt  /home/${USER}/requirements.txt
+COPY ./requirements.txt  ${HOME}/requirements.txt
 RUN sudo easy_install3 pip; \
   sudo pip install -r requirements.txt
 
