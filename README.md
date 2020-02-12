@@ -1,6 +1,6 @@
 # ATOM
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Atom_editor_logo.svg/220px-Atom_editor_logo.svg.png" width="200" height="200"/>
+<img src="https://assets.gitlab-static.net/uploads/-/system/project/avatar/12904435/220px-Atom_editor_logo.svg.png" width="200" height="200"/>
 
 ## INDEX
 
