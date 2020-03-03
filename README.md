@@ -9,7 +9,7 @@
   - [BADGES](#badges)
   - [INTRODUCTION](#introduction)
   - [PREREQUISITES](#prerequisites)
-  - [INSTALL](#install)
+    - [DOCKER RUN](#docker-run)
   - [LICENSE](#license)
 
 ## BADGES
@@ -34,9 +34,28 @@ Automatically updated on :
 
 Use [docker](https://www.docker.com)
 
-## INSTALL
+### DOCKER RUN
 
 ```docker run -d --name atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/atom -e DISPLAY --privileged --network host alexandreoda/atom```
+
+### DOCKER COMPOSE
+
+```yml
+version: "3.7"
+
+services:
+  atom:
+    container_name: atom
+    image: alexandreoda/atom
+    privileged: false
+    environment:
+      - DISPLAY
+    network_mode: host
+    volumes:
+      - "${HOME}:/home/atom"
+      - "/tmp/.X11-unix/:/tmp/.X11-unix/"
+      - "/dev/bus/usb:/dev/bus/usb"
+```
 
 ## LICENSE
 
