@@ -59,24 +59,14 @@ USER ${USER}
 RUN echo -e '\033[36;1m ******* SELECT WORKING SPACE ******** \033[0m'
 WORKDIR ${HOME}
 
-RUN echo -e '\033[36;1m ******* INSTALL PIP MODULES ******** \033[0m'
+RUN echo -e '\033[36;1m ******* INSTALL APP ******** \033[0m'
 COPY ./requirements.txt  ${HOME}/requirements.txt
+
 RUN sudo easy_install3 pip && \
-  sudo pip install -r requirements.txt
-
-RUN echo -e '\033[36;1m ******* INSTALL APP ******** \033[0m' && \
+  sudo pip install -r requirements.txt && \
   wget ${APP} -O atom-amd64.deb && \
-  sudo dpkg -i atom-amd64.deb
-
-RUN echo -e '\033[36;1m ******* INSTALL LINTER MODULES ******** \033[0m' && \
-  apm install \
-  linter-gcc \
-  jslint \
-  linter-tidy
-
-RUN echo -e '\033[36;1m ******* CLEANING ******** \033[0m' && \
-  sudo apt-get --purge autoremove -y \
-  wget && \
+  sudo dpkg -i atom-amd64.deb && \
+  sudo apt-get --purge autoremove -y wget && \
   rm -rf atom-amd64.deb requirements.txt
 
 RUN echo -e '\033[36;1m ******* CONTAINER START COMMAND ******** \033[0m'
