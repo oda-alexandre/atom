@@ -46,7 +46,8 @@ RUN echo -e '\033[36;1m ******* INSTALL PACKAGES ******** \033[0m' && \
   libgl1-mesa-dri \
   xdg-utils \
   policykit-1 \
-  libcanberra-gtk-module
+  libcanberra-gtk-module && \
+  rm -rf /var/lib/apt/lists/*
   
 RUN echo -e '\033[36;1m ******* ADD USER ******** \033[0m' && \
   useradd -d ${HOME} -m ${USER} && \
@@ -66,8 +67,8 @@ RUN sudo easy_install3 pip && \
   sudo pip install -r requirements.txt && \
   wget ${APP} -O atom-amd64.deb && \
   sudo dpkg -i atom-amd64.deb && \
-  sudo apt-get --purge autoremove -y wget && \
-  rm -rf atom-amd64.deb requirements.txt
+  rm -rf atom-amd64.deb requirements.txt && \
+  sudo apt-get --purge autoremove -y wget
 
 RUN echo -e '\033[36;1m ******* CONTAINER START COMMAND ******** \033[0m'
 CMD atom -f \
