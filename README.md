@@ -41,6 +41,8 @@ Use [docker](https://www.docker.com)
 ### DOCKER COMPOSE
 
 ```yml
+version: "3.7"
+
 services:
   atom:
     container_name: atom
