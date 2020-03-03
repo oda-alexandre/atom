@@ -4,7 +4,6 @@ LABEL authors https://www.oda-alexandre.com
 
 ENV USER atom
 ENV HOME /home/${USER}
-ENV LOCALES fr_FR.UTF-8
 ENV APP https://atom.io/download/deb
 
 RUN echo -e '\033[36;1m ******* ADD contrib non-free IN sources.list ******** \033[0m' && \
@@ -20,7 +19,6 @@ RUN echo -e '\033[36;1m ******* INSTALL PACKAGES ******** \033[0m' && \
   apt update && apt install -y --no-install-recommends \
   sudo \
   ca-certificates \
-  locales \
   apt-utils \
   wget \
   git \
@@ -49,9 +47,6 @@ RUN echo -e '\033[36;1m ******* INSTALL PACKAGES ******** \033[0m' && \
   xdg-utils \
   policykit-1 \
   libcanberra-gtk-module
-
-RUN echo -e '\033[36;1m ******* CHANGE LOCALES ******** \033[0m' && \
-  locale-gen ${LOCALES}
   
 RUN echo -e '\033[36;1m ******* ADD USER ******** \033[0m' && \
   useradd -d ${HOME} -m ${USER} && \
