@@ -9,6 +9,7 @@
   - [BADGES](#badges)
   - [INTRODUCTION](#introduction)
   - [PREREQUISITES](#prerequisites)
+  - [INSTALL](#install)
     - [DOCKER RUN](#docker-run)
   - [LICENSE](#license)
 
@@ -33,6 +34,8 @@ Automatically updated on :
 ## PREREQUISITES
 
 Use [docker](https://www.docker.com)
+
+## INSTALL
 
 ### DOCKER RUN
 
