@@ -25,7 +25,7 @@ Docker image of :
 
 Continuous integration on :
 
-- [gitlab](https://gitlab.com/oda-alexandre/atom/pipelines)
+- [gitlab pipelines](https://gitlab.com/oda-alexandre/atom/pipelines)
 
 Automatically updated on :
 
@@ -39,7 +39,7 @@ Use [docker](https://www.docker.com)
 
 ### DOCKER RUN
 
-```docker run -d --name atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/atom -e DISPLAY --privileged --network host alexandreoda/atom```
+```docker run -d --name atom -v ${HOME}:/home/atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY --network host alexandreoda/atom```
 
 ### DOCKER COMPOSE
 
@@ -53,11 +53,10 @@ services:
     privileged: false
     environment:
       - DISPLAY
-    network_mode: host
     volumes:
       - "${HOME}:/home/atom"
       - "/tmp/.X11-unix/:/tmp/.X11-unix/"
-      - "/dev/bus/usb:/dev/bus/usb"
+    network_mode: host
 ```
 
 ## LICENSE
