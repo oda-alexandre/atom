@@ -56,7 +56,6 @@ services:
     volumes:
       - "${HOME}:/home/atom"
       - "/tmp/.X11-unix/:/tmp/.X11-unix/"
-      - "/dev/shm:/dev/shm"
     network_mode: host
 ```
 
