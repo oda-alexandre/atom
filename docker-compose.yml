@@ -7,8 +7,8 @@ services:
     privileged: false
     environment:
       - DISPLAY
-    network_mode: host
     volumes:
       - "${HOME}:/home/atom"
       - "/tmp/.X11-unix/:/tmp/.X11-unix/"
-      - "/dev/bus/usb:/dev/bus/usb"
+      - "/dev/shm:/dev/shm"
+    network_mode: host
