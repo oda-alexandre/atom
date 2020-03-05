@@ -11,6 +11,7 @@
   - [PREREQUISITES](#prerequisites)
   - [INSTALL](#install)
     - [DOCKER RUN](#docker-run)
+    - [DOCKER COMPOSE](#docker-compose)
   - [LICENSE](#license)
 
 ## BADGES
@@ -39,7 +40,8 @@ Use [docker](https://www.docker.com)
 
 ### DOCKER RUN
 
-```docker run -d --name atom -v ${HOME}:/home/atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY --network host alexandreoda/atom```
+```docker run -d --name atom -v ${HOME}:/home/atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY --network host alexandreoda/atom
+```
 
 ### DOCKER COMPOSE
 
@@ -50,13 +52,14 @@ services:
   atom:
     container_name: atom
     image: alexandreoda/atom
+    restart: "no"
+    network_mode: host
     privileged: false
     environment:
       - DISPLAY
     volumes:
       - "${HOME}:/home/atom"
       - "/tmp/.X11-unix/:/tmp/.X11-unix/"
-    network_mode: host
 ```
 
 ## LICENSE
