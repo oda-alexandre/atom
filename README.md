@@ -41,7 +41,13 @@ Use [docker](https://www.docker.com)
 ### DOCKER RUN
 
 ```\
-docker  run -d --name atom -v ${HOME}:/home/atom -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY --network host alexandreoda/atom
+docker run -d \
+--name atom \
+--network host \
+-e DISPLAY \
+-v ${HOME}:/home/atom \
+-v /tmp/.X11-unix/:/tmp/.X11-unix/ \
+alexandreoda/atom
 ```
 
 ### DOCKER COMPOSE
