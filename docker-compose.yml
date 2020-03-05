@@ -4,10 +4,11 @@ services:
   atom:
     container_name: atom
     image: alexandreoda/atom
+    restart: "no"
+    network_mode: host
     privileged: false
     environment:
       - DISPLAY
     volumes:
       - "${HOME}:/home/atom"
       - "/tmp/.X11-unix/:/tmp/.X11-unix/"
-    network_mode: host
