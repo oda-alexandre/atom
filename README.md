@@ -3,11 +3,10 @@
 ![logo](https://assets.gitlab-static.net/uploads/-/system/project/avatar/12904435/220px-Atom_editor_logo.svg.png)
 
 - [ATOM](#atom)
-  - [INDEX](#index)
   - [BADGES](#badges)
   - [INTRODUCTION](#introduction)
   - [PREREQUISITES](#prerequisites)
-  - [INSTALL](#install)
+  - [BUILD](#build)
     - [DOCKER RUN](#docker-run)
     - [DOCKER COMPOSE](#docker-compose)
   - [LICENSE](#license)
@@ -45,6 +44,7 @@ docker run -d \
 -e DISPLAY \
 -v ${HOME}:/home/atom \
 -v /tmp/.X11-unix/:/tmp/.X11-unix/ \
+-v /etc/localtime:/etc/localtime:ro \
 alexandreoda/atom
 ```
 
@@ -65,6 +65,7 @@ services:
     volumes:
       - "${HOME}:/home/atom"
       - "/tmp/.X11-unix/:/tmp/.X11-unix/"
+      - "/etc/localtime:/etc/localtime:ro"
 ```
 
 ## LICENSE
